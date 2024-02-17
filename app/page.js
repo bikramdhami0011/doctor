@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react'
 import Hero from './component/Hero'
 import GlobalApi from './component/GlobalApi'
 import Image from 'next/image'
+
 function Home() {
+const name="birkamdhami"
   const [cimg, setcimg] = useState([])
   const myFun = async () => {
     const mydata = await GlobalApi()
