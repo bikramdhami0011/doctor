@@ -9,7 +9,7 @@ function Home() {
   const myFun = async () => {
     const mydata = await GlobalApi()
 
-    setcimg(mydata)
+    setcimg(mydata.data)
   }
   const [dimg, setdimg] = useState([])
   const myFun2 = async () => {
@@ -41,8 +41,9 @@ function Home() {
           </button>
         </div>
       </div>
+     
       <div className="grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6">
-        {cimg.data?.map((item, index) => {
+        {!cimg.length>0?cimg?.map((item, index) => {
           return (
             index <= 5 && (
               <div
@@ -50,6 +51,7 @@ function Home() {
                 className=" bg-blue-100 flex flex-col text-center gap-2 justify-center items-center m-2 p-2 shadow-md hover:shadow-lg transition-all ease-in-out scale-100 duration-500"
               >
                 <Image
+                alt='image'
                   src={item.attributes.icon.data.attributes.url}
                   height={100}
                   width={100}
@@ -58,7 +60,18 @@ function Home() {
               </div>
             )
           )
-        })}
+        }):
+        <div className=' h-full w-full flex  flex-row '>
+        {
+          [1,2,3,4,5,6].map((item,index)=>{
+            return( 
+              <div key={index} className=' bg-blue-100 w-full h-full flex flex-col text-center g justify-center items-center m-2 p-2 shadow-md hover:shadow-lg transition-all ease-in-out scale-100 duration-500 '>
+                {item}
+              </div>
+            )
+          })
+        }
+        </div>}
       </div>
        <h1>Search Doctors</h1>
        <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4">
@@ -73,6 +86,7 @@ function Home() {
                  src={item.attributes.photo.data.attributes.url}
                  height={200}
                  width={220}
+                 alt='image'
                  className=' h-[250px] w-[250px]'
                ></Image>
               
