@@ -43,7 +43,7 @@ function Home() {
       </div>
      
       <div className="grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6">
-        {!cimg.length>0?cimg?.map((item, index) => {
+        {cimg.length>0?cimg?.map((item, index) => {
           return (
             index <= 5 && (
               <div
@@ -61,12 +61,12 @@ function Home() {
             )
           )
         }):
-        <div className=' h-full w-full flex  flex-row '>
+        <div className=' animate-pulse h-[400px] w-[100vw] gap-2 grid grid-cols-2 m-4 md:grid-cols-4 lg:grid-cols-6 '>
         {
           [1,2,3,4,5,6].map((item,index)=>{
             return( 
-              <div key={index} className=' bg-blue-100 w-full h-full flex flex-col text-center g justify-center items-center m-2 p-2 shadow-md hover:shadow-lg transition-all ease-in-out scale-100 duration-500 '>
-                {item}
+              <div key={index} className=' bg-blue-100 flex flex-col text-center gap-2 justify-center items-center m-2 p-2 shadow-md hover:shadow-lg transition-all ease-in-out scale-100 duration-500 w-full '>
+                
               </div>
             )
           })
@@ -75,7 +75,7 @@ function Home() {
       </div>
        <h1>Search Doctors</h1>
        <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4">
-       {dimg?.map((item, index) => {
+       {dimg.length>0?dimg?.map((item, index) => {
          return (
            index <= 5 && (
              <div
@@ -100,7 +100,17 @@ function Home() {
              </div>
            )
          )
-       })}
+       }):<div className=' animate-pulse h-[700px] w-[100vw] gap-2 grid grid-cols-2 m-4 md:grid-cols-4 lg:grid-cols-6 '>
+       {
+         [1,2,3,4,5,6].map((item,index)=>{
+           return( 
+             <div key={index} className=' bg-blue-100 flex flex-col text-center gap-2 justify-center items-center m-2 p-2 shadow-md hover:shadow-lg transition-all ease-in-out scale-100 duration-500 w-full '>
+               
+             </div>
+           )
+         })
+       }
+       </div>}
        
        </div>
 
