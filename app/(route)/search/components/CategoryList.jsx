@@ -13,7 +13,11 @@ import {
   } from "@/components/ui/command"
   import GlobalApi from '@/app/component/GlobalApi'
 import Image from 'next/image'
-function CategoryList() {
+import { usePathname } from 'next/navigation'
+function CategoryList(params) {
+  const path=usePathname();
+  
+  console.log(path)
     const [cimg, setcimg] = useState([])
     const myFun = async () => {
       const mydata = await GlobalApi()
@@ -26,9 +30,9 @@ function CategoryList() {
     },[])
   return (
     <div>
-    <Command>
-    <CommandInput placeholder="Type a command or search..." />
-    <CommandList>
+    <Command className="h-full">
+    <CommandInput placeholder="Type a command or search..."  />
+    <CommandList className="overflow-visible w-full mt-10 h-screen">
       <CommandEmpty>No results found.</CommandEmpty>
       <CommandGroup heading="Category">
     
@@ -40,8 +44,8 @@ function CategoryList() {
                       <Image
                       alt='image'
                         src={item.attributes.icon.data.attributes.url}
-                        height={100}
-                        width={100}
+                        height={30}
+                        width={30}
                       ></Image>
                       <h2>{item.attributes.name}</h2>
                       </CommandItem>

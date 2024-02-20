@@ -4,6 +4,7 @@ import Hero from './component/Hero'
 import GlobalApi from './component/GlobalApi'
 import Image from 'next/image'
 import DoctorApi from "./component/DoctorApi"
+import Link from 'next/link'
 function Home() {
   const [cimg, setcimg] = useState([])
   const myFun = async () => {
@@ -46,7 +47,7 @@ function Home() {
         {cimg.length>0?cimg?.map((item, index) => {
           return (
             index <= 5 && (
-              <div
+              <Link href={`/search/${item.attributes.name}`}
                 key={index}
                 className=" bg-blue-100 flex flex-col text-center gap-2 justify-center items-center m-2 p-2 shadow-md hover:shadow-lg transition-all ease-in-out scale-100 duration-500"
               >
@@ -57,7 +58,7 @@ function Home() {
                   width={100}
                 ></Image>
                 <h2>{item.attributes.name}</h2>
-              </div>
+              </Link>
             )
           )
         }):
